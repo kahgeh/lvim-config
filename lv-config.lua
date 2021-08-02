@@ -100,13 +100,30 @@ lvim.plugins = {
     ft = "markdown",
   },
   {
-    "Pocco81/AutoSave.nvim"
+    "Pocco81/AutoSave.nvim",
+    config = function()
+      require('autoSave').setup({
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 500 
+    })
+    end
   },
   {
       "ray-x/lsp_signature.nvim",
       config = function() require"lsp_signature".on_attach() end,
       event = "InsertEnter"
-  }
+  },
+  { "rust-lang/rust.vim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
