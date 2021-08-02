@@ -17,13 +17,14 @@ lvim.keys.normal_mode = {
     {'<Tab>', ':bnext<cr>'},
     {'<S-Tab>', ':bprevious<cr>'},
     {'<C-l>', ":lua require('ls-crates').insert_latest_version()<cr>"},
-    {'<S-e>', ":NvimTreeFindFile<cr>"}
+    {'<S-e>', ":NvimTreeFindFile<cr>"},
+    {'<A-CR>', ":lua vim.lsp.buf.code_action()<cr>"}
 }
+
 -- if you just want to augment the existing ones then use the utility function
--- require("utils").add_keymap_insert_mode({ silent = true }, {
--- { "<C-s>", ":w<cr>" },
--- { "<C-c>", "<ESC>" },
--- })
+require("utils").add_keymap_insert_mode({ silent = true }, {
+   { "<->", ":lua vim.lsp.buf.code_action()<cr>" },
+ })
 -- you can also use the native vim way directly
 -- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
 
@@ -46,8 +47,7 @@ lvim.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }
 lvim.builtin.which_key.mappings["|"]= {
   name = "Splits",
   h={ "<cmd>lua require('Navigator').left()<cr>", "Navigate left"},
-  l={ "<cmd>lua require('Navigator').right()<cr>", "Navigate right"},
-  c={ "<cmd>windo bd<cr>", "Close"}
+  l={ "<cmd>lua require('Navigator').right()<cr>", "Navigate right"}
 }
 
 -- generic LSP settings
