@@ -18,7 +18,7 @@ lvim.keys.normal_mode = {
     {'<S-Tab>', ':bprevious<cr>'},
     {'<C-l>', ":lua require('ls-crates').insert_latest_version()<cr>"},
     {'<S-e>', ":NvimTreeFindFile<cr>"},
-    {'<A-CR>', ":lua vim.lsp.buf.code_action()<cr>"}
+    {'<A-CR>', ":lua vim.lsp.buf.code_action()<cr>"},
 }
 
 -- if you just want to augment the existing ones then use the utility function
@@ -44,11 +44,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
 lvim.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
 lvim.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }
-lvim.builtin.which_key.mappings["|"]= {
-  name = "Splits",
-  h={ "<cmd>lua require('Navigator').left()<cr>", "Navigate left"},
-  l={ "<cmd>lua require('Navigator').right()<cr>", "Navigate right"}
-}
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
