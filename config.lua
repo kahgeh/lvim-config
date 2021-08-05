@@ -122,6 +122,14 @@ lvim.plugins = {
   },
 }
 
+require'lspconfig'.powershell_es.setup{
+  bundle_path = '/Users/kahgeh.tan/bin/PowerShellEditorServices',
+  cmd = {'pwsh', '-NoLogo', '-NoProfile', '-Command', '/Users/kahgeh.tan/bin/PowerShellEditorServices/Start-EditorServices.ps1'},
+  root_dir = function(fname)
+      return fname
+  end
+}
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
