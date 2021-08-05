@@ -5,28 +5,30 @@ lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "spacegray"
 
--- keymappings
+-- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
--- overwrite the key-mappings provided by LunarVim for any mode, or leave it empty to keep them
-lvim.keys.normal_mode = {
---   Page down/up
---   {'[d', '<PageUp>'},
---   {']d', '<PageDown>'},
---
---   Navigate buffer
-    {'<Tab>', ':bnext<cr>'},
-    {'<S-Tab>', ':bprevious<cr>'},
-    {'<C-l>', ":lua require('ls-crates').insert_latest_version()<cr>"},
-    {'<S-e>', ":NvimTreeFindFile<cr>"},
-    {'<A-CR>', ":lua vim.lsp.buf.code_action()<cr>"},
-}
+-- add your own keymapping
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- unmap a default keymapping
+-- lvim.keys.normal_mode["<C-Up>"] = ""
+-- edit a default keymapping
 
--- if you just want to augment the existing ones then use the utility function
-require("utils").add_keymap_insert_mode({ silent = true }, {
-   { "<->", ":lua vim.lsp.buf.code_action()<cr>" },
- })
--- you can also use the native vim way directly
--- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
+lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
+lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
+lvim.keys.normal_mode["<C-l>"] = ":lua require('ls-crates').insert_latest_version()<cr>"
+lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
+lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
+-- Use which-key to add extra bindings with the leader-key prefix
+-- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  r = { "<cmd>Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnosticss" },
+  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+  w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
+}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -39,11 +41,6 @@ lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.treesitter.ensure_installed = {}
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
-
--- WhichKey
-lvim.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
-lvim.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
-lvim.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -75,15 +72,6 @@ lvim.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }
 lvim.plugins = {
   { "lunarvim/colorschemes" },
   {
-    'numToStr/Navigator.nvim',
-    config = function()
-        require('Navigator').setup({
-          auto_save = 'current',
-          disable_on_zoom = true
-        })
-    end
-  },
-  {
     "kahgeh/ls-crates.nvim",
     config= function()
       require "ls-crates"
@@ -114,7 +102,7 @@ lvim.plugins = {
         write_all_buffers = false,
         on_off_commands = true,
         clean_command_line_interval = 0,
-        debounce_delay = 500 
+        debounce_delay = 500
     })
     end
   },
@@ -123,12 +111,9 @@ lvim.plugins = {
       config = function() require"lsp_signature".on_attach() end,
       event = "InsertEnter"
   },
-  { "rust-lang/rust.vim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
-
--- Additional Leader bindings for WhichKey
