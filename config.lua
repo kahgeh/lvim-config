@@ -83,6 +83,15 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
   {
+    "folke/zen-mode.nvim",
+  },
+  {
+    "unblevable/quick-scope",
+    config = function()
+      require "user.quickscope"
+    end,
+  },
+  {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     ft = "markdown",
