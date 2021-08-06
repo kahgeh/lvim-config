@@ -41,6 +41,7 @@ lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.treesitter.ensure_installed = {}
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.bufferline.active = true
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -53,6 +54,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
+-- lvim.lang.ps1.lsp.setup.cmd = {'pwsh', '-NoLogo', '-NoProfile', '-Command', '/Users/kahgeh.tan/bin/pwsh_es/PowerShellEditorServices/Start-EditorServices.ps1', '-HostName nvim', '-HostProfileId 1', '-HostVersion 0.5.0'}
 -- set a formatter if you want to override the default lsp one (if it exists)
 -- lvim.lang.python.formatters = {
 --   {
@@ -120,14 +122,6 @@ lvim.plugins = {
       config = function() require"lsp_signature".on_attach() end,
       event = "InsertEnter"
   },
-}
-
-require'lspconfig'.powershell_es.setup{
-  bundle_path = '/Users/kahgeh.tan/bin/PowerShellEditorServices',
-  cmd = {'pwsh', '-NoLogo', '-NoProfile', '-Command', '/Users/kahgeh.tan/bin/PowerShellEditorServices/Start-EditorServices.ps1'},
-  root_dir = function(fname)
-      return fname
-  end
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
