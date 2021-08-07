@@ -15,7 +15,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
-lvim.keys.normal_mode["<C-l>"] = ":lua require('ls-crates').insert_latest_version()<cr>"
 lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -28,6 +27,9 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
+lvim.builtin.which_key.mappings.R = {
+  name= "+Rust",
+  v = { ":lua require('ls-crates').insert_latest_version()<cr>", "insert latest crate version" }
 }
 
 -- TODO: User Config for predefined plugins
