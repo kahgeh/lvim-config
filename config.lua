@@ -17,6 +17,9 @@ lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
 lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
+
+vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
+
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
 lvim.builtin.which_key.mappings.d ={ "<cmd>TroubleToggle<cr>", "Diagnostics" }
