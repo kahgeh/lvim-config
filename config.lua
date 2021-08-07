@@ -25,6 +25,11 @@ lvim.builtin.which_key.mappings.R = {
   v = { ":lua require('ls-crates').insert_latest_version()<cr>", "insert latest crate version" }
 }
 
+lvim.builtin.which_key.mappings.t = {
+  name="+Terminal",
+  b = {"<cmd>ToggleTerm direction=horizontal size=10<cr>", "bottom terminal"},
+  r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"}
+}
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
