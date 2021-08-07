@@ -12,7 +12,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
-
 lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
 lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
@@ -58,7 +57,7 @@ lvim.builtin.bufferline.active = true
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- lvim.lang.ps1.lsp.setup.cmd = {'pwsh', '-NoLogo', '-NoProfile', '-Command', '/Users/kahgeh.tan/bin/pwsh_es/PowerShellEditorServices/Start-EditorServices.ps1', '-HostName nvim', '-HostProfileId 1', '-HostVersion 0.5.0'}
+lvim.lang.ps1.lsp.setup.bundle_path = '/Users/kahgeh.tan/bin/pwsh_es'
 -- set a formatter if you want to override the default lsp one (if it exists)
 -- lvim.lang.python.formatters = {
 --   {
