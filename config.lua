@@ -16,8 +16,10 @@ lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
 lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
-
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
+
+lvim.builtin.treesitter.foldmethod = "expr"
+lvim.builtin.treesitter.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
@@ -26,11 +28,12 @@ lvim.builtin.which_key.mappings.R = {
   name= "+Rust",
   v = { ":lua require('ls-crates').insert_latest_version()<cr>", "insert latest crate version" }
 }
-
+lvim.builtin.which_key.mappings.F ={"<cmd>setlocal foldmethod=syntax<cr>", "fold based on syntax"} 
 lvim.builtin.which_key.mappings.t = {
   name="+Terminal",
   b = {"<cmd>ToggleTerm direction=horizontal size=10<cr>", "bottom terminal"},
-  r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"}
+  r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"},
+  w = {"<cmd>vsp +term<cr>", "right terminal"}
 }
 
 -- TODO: User Config for predefined plugins
@@ -116,18 +119,19 @@ lvim.plugins = {
         write_all_buffers = false,
         on_off_commands = true,
         clean_command_line_interval = 0,
-        debounce_delay = 500
+        debounce_delay = 60000
     })
     end
   },
-  {
-      "ray-x/lsp_signature.nvim",
-      config = function() require"lsp_signature".on_attach() end,
-      event = "InsertEnter"
-  },
+  -- {
+  --     "ray-x/lsp_signature.nvim",
+  --     config = function() require"lsp_signature".on_attach() end,
+  --     event = "InsertEnter"
+  -- },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
+
