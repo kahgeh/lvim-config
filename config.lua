@@ -131,7 +131,9 @@ lvim.plugins = {
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
+lvim.autocommands.custom_groups = {
+  { "FileType", "rust", "set matchpairs+=<:>" },
+  { "FileType", "csharp", "set matchpairs+=<:>" },
+  { "FileType", "typescript", "set matchpairs+=<:>"}
+}
 
