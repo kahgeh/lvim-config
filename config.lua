@@ -17,7 +17,7 @@ lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
 lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
-
+vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
 
 lvim.builtin.treesitter.foldmethod = "expr"
 lvim.builtin.treesitter.foldexpr = "nvim_treesitter#foldexpr()"
@@ -29,7 +29,7 @@ lvim.builtin.which_key.mappings.R = {
   name= "+Rust",
   v = { ":lua require('ls-crates').insert_latest_version()<cr>", "insert latest crate version" }
 }
-lvim.builtin.which_key.mappings.F ={"<cmd>setlocal foldmethod=syntax<cr>", "fold based on syntax"} 
+lvim.builtin.which_key.mappings.F ={"<cmd>setlocal foldmethod=syntax<cr>", "fold based on syntax"}
 lvim.builtin.which_key.mappings.t = {
   name="+Terminal",
   b = {"<cmd>ToggleTerm direction=horizontal size=10<cr>", "bottom terminal"},
