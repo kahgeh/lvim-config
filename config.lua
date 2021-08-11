@@ -125,11 +125,13 @@ lvim.plugins = {
     })
     end
   },
-  -- {
-  --     "ray-x/lsp_signature.nvim",
-  --     config = function() require"lsp_signature".on_attach() end,
-  --     event = "InsertEnter"
-  -- },
+  {"RishabhRD/popfix"},
+  {
+    "RishabhRD/nvim-lsputils",
+    config = function ()
+      vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+    end
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
