@@ -12,9 +12,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
-lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
-lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<cr>"
-lvim.keys.normal_mode["<S-e>"] = ":NvimTreeFindFile<cr>"
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
@@ -36,7 +33,6 @@ lvim.builtin.which_key.mappings.t = {
   r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"},
   w = {"<cmd>vsp +term<cr>", "right terminal"}
 }
-lvim.builtin.which_key.mappings.S = {"<cmd>noh<cr>", "Clear search highlight"}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
