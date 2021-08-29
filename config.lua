@@ -9,8 +9,10 @@ lvim.colorscheme = "spacegray"
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
+
 -- edit a default keymapping
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
@@ -21,7 +23,7 @@ lvim.builtin.treesitter.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
-lvim.builtin.which_key.mappings.d ={ "<cmd>TroubleToggle<cr>", "Diagnostics" }
+lvim.builtin.which_key.mappings.E ={ "<cmd>TroubleToggle<cr>", "Error/Warnings" }
 lvim.builtin.which_key.mappings.R = {
   name= "+Rust",
   v = { ":lua require('ls-crates').insert_latest_version()<cr>", "insert latest crate version" }
@@ -40,6 +42,7 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {}
