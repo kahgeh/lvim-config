@@ -3,7 +3,6 @@
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "spacegray"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -41,7 +40,6 @@ lvim.builtin.which_key.mappings.t = {
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -62,20 +60,6 @@ lvim.builtin.bufferline.active = true
 -- end
 
 lvim.lang.ps1.lsp.setup.bundle_path = '/Users/kahgeh.tan/bin/pwsh_es'
--- set a formatter if you want to override the default lsp one (if it exists)
--- lvim.lang.python.formatters = {
---   {
---     exe = "black",
---     args = {}
---   }
--- }
--- set an additional linter
--- lvim.lang.python.linters = {
---   {
---     exe = "flake8",
---     args = {}
---   }
--- }
 
 -- Additional Plugins
 lvim.plugins = {
