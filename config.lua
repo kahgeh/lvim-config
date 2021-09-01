@@ -8,6 +8,7 @@ lvim.lint_on_save = true
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["Y"] = "y$"
 
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
