@@ -9,7 +9,7 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
-lvim.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
+
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 
