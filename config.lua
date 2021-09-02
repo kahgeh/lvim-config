@@ -9,7 +9,7 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
-
+lvim.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 
@@ -18,8 +18,6 @@ lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
 
-lvim.builtin.treesitter.foldmethod = "expr"
-lvim.builtin.treesitter.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
@@ -44,7 +42,10 @@ lvim.builtin.nvimtree.side = "left"
 lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {}
+lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.foldmethod = "expr"
+lvim.builtin.treesitter.foldexpr = "nvim_treesitter#foldexpr()"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.bufferline.active = true
@@ -84,6 +85,20 @@ lvim.plugins = {
     config = function()
       require "user.quickscope"
     end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    -- event = "BufReadPre",
+    config = function()
+      require "user.blankline"
+    end,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end
   },
   {
     "iamcco/markdown-preview.nvim",
