@@ -33,6 +33,8 @@ lvim.builtin.which_key.mappings.t = {
   r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"},
   w = {"<cmd>vsp +term<cr>", "right terminal"}
 }
+lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
+lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -40,7 +42,6 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.dap.active = true
-
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.autotag.enable = true
@@ -135,6 +136,14 @@ lvim.plugins = {
     "blackCauldron7/surround.nvim",
     config = function()
       require "surround".setup {}
+    end
+  },
+  {
+    "mattn/vim-gist",
+    event = "BufRead",
+    requires = "mattn/webapi-vim",
+    config = function ()
+      require "user.gist"
     end
   }
 }
