@@ -18,7 +18,6 @@ lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
 
-
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
 lvim.builtin.which_key.mappings.E ={ "<cmd>TroubleToggle<cr>", "Error/Warnings" }
@@ -36,6 +35,7 @@ lvim.builtin.which_key.mappings.t = {
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
+lvim.builtin.which_key.vmappings.r={"\"sy:let @/=@s<cr>cgn", "replace"}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -138,6 +138,9 @@ lvim.plugins = {
     config = function()
       require "surround".setup {}
     end
+  },
+  {
+    "mattn/webapi-vim"
   },
   {
     "mattn/vim-gist",
