@@ -1,4 +1,13 @@
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+function _G.search_all_to_qfix()
+  local old_text = vim.fn.input("search term: ", "")
+  if old_text == '' then
+    return
+  end
+  vim.cmd(":let @/='" .. old_text .. "'")
+  vim.cmd("vimgrep ".. "/" .. old_text .. "/g `git ls-files`")
+  vim.cmd(":copen")
+end
 
 -- general
 lvim.format_on_save = true
@@ -32,9 +41,14 @@ lvim.builtin.which_key.mappings.t = {
   r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"},
   w = {"<cmd>vsp +term<cr>", "right terminal"}
 }
+lvim.builtin.which_key.mappings.G = {
+  name="+Global",
+  s = {":lua search_all_to_qfix()<cr>", "search"},
+}
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
+
 lvim.builtin.which_key.vmappings.r={"\"sy:let @/=@s<cr>cgn", "replace"}
 
 -- TODO: User Config for predefined plugins
@@ -158,4 +172,3 @@ lvim.autocommands.custom_groups = {
   { "FileType", "csharp", "set matchpairs+=<:>" },
   { "FileType", "typescript", "set matchpairs+=<:>"}
 }
-
