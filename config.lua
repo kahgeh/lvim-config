@@ -35,6 +35,7 @@ lvim.builtin.which_key.mappings.t = {
 }
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
+lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -145,7 +146,7 @@ lvim.plugins = {
     config = function ()
       require "user.gist"
     end
-  }
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
