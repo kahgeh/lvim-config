@@ -30,16 +30,18 @@ lvim.builtin.which_key.mappings.t = {
   r = {"<cmd>ToggleTerm direction=vertical size=85<cr>", "right terminal"},
   w = {"<cmd>vsp +term<cr>", "right terminal"}
 }
-lvim.builtin.which_key.mappings.G = {
-  name="+Global",
-  s = {":lua search_all_to_qfix()<cr>", "search"},
-}
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
 lvim.builtin.which_key.mappings.l.D= require('user.deno').generate_whichkey_bindings()
-lvim.builtin.which_key.vmappings.r= require('user.replace').generate_whichkey_bindings()
 lvim.builtin.which_key.mappings.S = require('user.surround').generate_whichkey_bindings()
+
+local replace_kb = require( 'user.replace' ).generate_whichkey_bindings()
+lvim.builtin.which_key.mappings.G = {
+  name="+Global",
+  s = replace_kb.global_search 
+}
+lvim.builtin.which_key.vmappings.r = replace_kb.replace
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -153,6 +155,13 @@ lvim.plugins = {
     event = "BufRead",
     keys = {"c", "d", "y"}
   },
+  {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("user.hop").config()
+    end,
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

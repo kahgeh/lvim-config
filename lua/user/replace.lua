@@ -10,7 +10,10 @@ end
 
 local M = {}
 function M.generate_whichkey_bindings()
-  return {"\"sy:let @/=@s<cr>cgn", "replace"}
+  return { 
+    replace = {"\"sy:let @/=@s<cr>cgn", "replace"},
+    global_search ={":lua search_all_to_qfix()<cr>", "search"}  
+  }
 end
 return M
 
