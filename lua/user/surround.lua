@@ -1,3 +1,4 @@
+
 function _G.escape_quotes(ch)
   if ch == "\"" then
     return  "\\\""
@@ -44,7 +45,6 @@ end
 
 local M = {}
 function M.generate_whichkey_bindings()
-  
   return {
     name = "+Surround",
     w = { ":lua surround_insert_word()<cr>", "surround around word" },
@@ -53,7 +53,6 @@ function M.generate_whichkey_bindings()
     l = { ":lua surround_own_line()<cr>", "surround around line" }
   }
 end
-
 return M
 
 
