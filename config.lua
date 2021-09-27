@@ -37,8 +37,8 @@ lvim.builtin.which_key.mappings.G = {
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
-lvim.builtin.which_key.mappings.S = surround.generate_whichkey_bindings()
 lvim.builtin.which_key.vmappings.r= require('user.replace').generate_whichkey_bindings()
+lvim.builtin.which_key.mappings.S = require('user.surround').generate_whichkey_bindings()
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
