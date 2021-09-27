@@ -1,18 +1,7 @@
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-function _G.search_all_to_qfix()
-  local old_text = vim.fn.input("search term: ", "")
-  if old_text == '' then
-    return
-  end
-  vim.cmd(":let @/='" .. old_text .. "'")
-  vim.cmd("vimgrep ".. "/" .. old_text .. "/g `git ls-files`")
-  vim.cmd(":copen")
-end
-
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
-
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -48,11 +37,8 @@ lvim.builtin.which_key.mappings.G = {
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
-
-lvim.builtin.which_key.vmappings.r={"\"sy:let @/=@s<cr>cgn", "replace"}
-
-local surround = require 'user.surround'
 lvim.builtin.which_key.mappings.S = surround.generate_whichkey_bindings()
+lvim.builtin.which_key.vmappings.r= require('user.replace').generate_whichkey_bindings()
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -151,12 +137,6 @@ lvim.plugins = {
     end
   },
   {
-    "blackCauldron7/surround.nvim",
-    config = function()
-      require "surround".setup {}
-    end
-  },
-  {
     "mattn/webapi-vim"
   },
   {
@@ -166,6 +146,11 @@ lvim.plugins = {
     config = function ()
       require "user.gist"
     end
+  },
+  {
+    "tpope/vim-surround",
+    event = "BufRead",
+    keys = {"c", "d", "y"}
   },
 }
 
