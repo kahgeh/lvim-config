@@ -51,6 +51,9 @@ lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
 
 lvim.builtin.which_key.vmappings.r={"\"sy:let @/=@s<cr>cgn", "replace"}
 
+local surround = require 'user.surround'
+lvim.builtin.which_key.mappings.S = surround.generate_whichkey_bindings()
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
