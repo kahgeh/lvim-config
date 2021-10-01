@@ -39,7 +39,7 @@ lvim.builtin.which_key.mappings.S = require('user.surround').generate_whichkey_b
 local replace_kb = require( 'user.replace' ).generate_whichkey_bindings()
 lvim.builtin.which_key.mappings.G = {
   name="+Global",
-  s = replace_kb.global_search 
+  s = replace_kb.global_search
 }
 lvim.builtin.which_key.vmappings.r = replace_kb.replace
 
