@@ -13,6 +13,8 @@ lvim.keys.normal_mode["Y"] = "y$"
 
 -- edit a default keymapping
 lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
+lvim.keys.normal_mode["<A-BS>"] = "bdw"
+lvim.keys.normal_mode["<A-d>"] = "daw"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
 
