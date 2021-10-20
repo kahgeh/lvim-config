@@ -12,7 +12,7 @@ lvim.keys.normal_mode["Y"] = "y$"
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 
 -- edit a default keymapping
-lvim.keys.normal_mode["<A-CR>"] = ":lua vim.lsp.buf.code_action()<cr>"
+lvim.keys.normal_mode["<A-CR>"] = ":lua require('lvim.core.telescope').code_actions()<cr>"
 lvim.keys.normal_mode["<A-BS>"] = "bdw"
 lvim.keys.normal_mode["<A-d>"] = "daw"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
@@ -70,11 +70,14 @@ lvim.builtin.bufferline.active = true
 --   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
+lvim.lsp.override = {"powershell_es"}
 
-lvim.lang.ps1.lsp.setup.bundle_path = '/Users/kahgeh.tan/bin/pwsh_es'
+require'lspconfig'.powershell_es.setup{
+  bundle_path= "/Users/kahgeh.tan/bin/pwsh_es"
+}
 
 -- Additional Plugins
-lvim.plugins = {
+lvim.plugins = { 
   { "lunarvim/colorschemes" },
   {
     "kahgeh/ls-crates.nvim",
@@ -132,13 +135,6 @@ lvim.plugins = {
         clean_command_line_interval = 0,
         debounce_delay = 60000
     })
-    end
-  },
-  {"RishabhRD/popfix"},
-  {
-    "RishabhRD/nvim-lsputils",
-    config = function ()
-      vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
     end
   },
   {
