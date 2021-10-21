@@ -15,6 +15,8 @@ lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<A-CR>"] = ":lua require('lvim.core.telescope').code_actions()<cr>"
 lvim.keys.normal_mode["<A-BS>"] = "bdw"
 lvim.keys.normal_mode["<A-d>"] = "daw"
+lvim.keys.normal_mode["<C-a>"] = "^"
+lvim.keys.normal_mode["<C-e>"] = "$"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
 
