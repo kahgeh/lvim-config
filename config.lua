@@ -17,6 +17,7 @@ lvim.keys.normal_mode["<A-BS>"] = "bdw"
 lvim.keys.normal_mode["<A-d>"] = "daw"
 lvim.keys.normal_mode["<C-a>"] = "^"
 lvim.keys.normal_mode["<C-e>"] = "$"
+lvim.keys.normal_mode["<A-Right>"] = "w"
 vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
 vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
 
@@ -53,6 +54,10 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.dap.active = true
+lvim.builtin.dap.on_config_done = function (_)
+  lvim.builtin.which_key.mappings.d.O = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" }
+  lvim.builtin.which_key.mappings.d.u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" }
+end
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.autotag.enable = true
@@ -161,8 +166,17 @@ lvim.plugins = {
     config = function()
       require("user.hop").config()
     end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    requires = {"mfussenegger/nvim-dap"},
+    config = function()
+      require('dapui').setup()
+    end
   }
 }
+
+require("user.dap").config()
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
