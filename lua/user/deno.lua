@@ -3,7 +3,7 @@ function _G.load_deno_lsp()
     provider = "denols",
     setup = {
       cmd = {
-        DATA_PATH .. "/lspinstall/deno/bin/deno",
+        vim.fn.stdpath("data")  .. "/lspinstall/deno/bin/deno",
         "lsp",
       },
       filetypes = {"typescript"},
