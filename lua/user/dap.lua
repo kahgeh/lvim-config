@@ -27,6 +27,13 @@ M.config = function()
     args = {dapinstall_path .. "/chrome/vscode-chrome-debug/out/src/chromeDebug.js"}
   }
 
+  local dotnetdbg_path = dapinstall_path .. "/dnetcs/netcoredbg/netcoredbg"
+  dap.adapters.netcoredbg = {
+    type = 'executable',
+    command = dotnetdbg_path,
+    args = {'--interpreter=vscode'}
+  }
+
   local lldb_path = vim.fn.expand(dapinstall_path .. "/codelldb/extension/adapter/codelldb")
   dap.adapters.lldb = function(on_adapter)
     local stdout = vim.loop.new_pipe(false)
@@ -205,6 +212,17 @@ M.config = function()
         ["webpack://_N_E/./*"] = "${webRoot}/*",
         ["webpack:///./*"] = "${webRoot}/*",
       },
+    },
+  }
+
+  dap.configurations.cs = {
+    {
+      type = "netcoredbg",
+      name = "launch - netcoredbg",
+      request = "launch",
+      program = function()
+          return vim.fn.input('Path to dll', vim.fn.getcwd(), 'file')
+      end,
     },
   }
 
