@@ -77,7 +77,7 @@ lvim.builtin.bufferline.active = true
 --   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
-lvim.lsp.override = {"powershell_es"}
+vim.list_extend(lvim.lsp.override, {"powershell_es", "tailwindcss", "ember"})
 
 require'lspconfig'.powershell_es.setup{
   bundle_path= "/Users/kahgeh.tan/bin/pwsh_es"
