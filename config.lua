@@ -38,7 +38,6 @@ lvim.builtin.which_key.mappings.t = {
 lvim.builtin.which_key.mappings.g.t={":luafile ~/.github-gist-secret.lua<cr>", "load token"}
 lvim.builtin.which_key.mappings.g.S={":Gist<cr>", "save gist"}
 lvim.builtin.which_key.mappings.l.h={"<cmd>lua vim.lsp.buf.hover()<cr>", "help"}
-lvim.builtin.which_key.mappings.l.D= require('user.deno').generate_whichkey_bindings()
 lvim.builtin.which_key.mappings.S = require('user.surround').generate_whichkey_bindings()
 
 local replace_kb = require( 'user.replace' ).generate_whichkey_bindings()
@@ -77,8 +76,8 @@ lvim.builtin.bufferline.active = true
 --   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
+lvim.lsp.automatic_servers_installation = true
 vim.list_extend(lvim.lsp.override, {"powershell_es", "tailwindcss", "ember"})
-
 require'lspconfig'.powershell_es.setup{
   bundle_path= "/Users/kahgeh.tan/bin/pwsh_es"
 }
