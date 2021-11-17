@@ -82,6 +82,8 @@ require("lspconfig").powershell_es.setup({
 	bundle_path = "/Users/kahgeh.tan/bin/pwsh_es",
 })
 
+-- additional keybindings
+require("user.keybinding").config()
 -- Additional Plugins
 lvim.plugins = {
 	{ "lunarvim/colorschemes" },
@@ -91,6 +93,13 @@ lvim.plugins = {
 			require("ls-crates")
 		end,
 		ft = { "toml" },
+	},
+	{
+		"ThePrimeagen/harpoon",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-lua/popup.nvim" },
+		},
 	},
 	{
 		"folke/trouble.nvim",
