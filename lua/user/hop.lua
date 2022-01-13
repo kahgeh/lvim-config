@@ -6,7 +6,6 @@ M.config = function()
     return
   end
   hop.setup()
-  vim.api.nvim_set_keymap("", "s", ":HopChar2<cr>", { silent = true })
   vim.api.nvim_set_keymap("", "<C-s>", ":HopWord<cr>", { silent = true })
 end
 
