@@ -24,8 +24,21 @@ local function set_harpoon_keymaps()
 	})
 end
 
+local function set_hop_keymaps()
+	local opts = { noremap = true, silent = true }
+	vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", opts)
+end
+
+local function set_quickscope_keymaps()
+	vim.cmd([[
+      let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+      ]])
+end
+
 M.config = function()
 	set_harpoon_keymaps()
+	set_hop_keymaps()
+	set_quickscope_keymaps()
 end
 
 return M

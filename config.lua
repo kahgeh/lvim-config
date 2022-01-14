@@ -5,8 +5,7 @@ lvim.lint_on_save = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+--add your own keymapping
 lvim.keys.normal_mode["Y"] = "y$"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
@@ -52,6 +51,7 @@ lvim.builtin.which_key.vmappings.r = replace_kb.replace
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
+lvim.builtin.notify.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.dap.on_config_done = function(_)
 	lvim.builtin.which_key.mappings.d.O = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" }
@@ -65,6 +65,20 @@ lvim.builtin.treesitter.foldexpr = "nvim_treesitter#foldexpr()"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.bufferline.active = true
+lvim.builtin.treesitter.ensure_installed = {
+	"bash",
+	"c",
+	"javascript",
+	"json",
+	"lua",
+	"python",
+	"typescript",
+	"css",
+	"rust",
+	"java",
+	"yaml",
+	"c_sharp",
+}
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -83,7 +97,7 @@ require("lspconfig").powershell_es.setup({
 })
 
 -- additional keybindings
-require("user.keybinding").config()
+require("user.keybindings").config()
 -- Additional Plugins
 lvim.plugins = {
 	{ "lunarvim/colorschemes" },
@@ -110,9 +124,6 @@ lvim.plugins = {
 	},
 	{
 		"unblevable/quick-scope",
-		config = function()
-			require("user.quickscope")
-		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -170,7 +181,7 @@ lvim.plugins = {
 	},
 	{
 		"phaazon/hop.nvim",
-		event = "BufRead",
+		branch = "v1",
 		config = function()
 			require("user.hop").config()
 		end,
