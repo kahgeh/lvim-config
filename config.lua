@@ -98,6 +98,8 @@ require("lspconfig").powershell_es.setup({
 
 -- additional keybindings
 require("user.keybindings").config()
+lvim.builtin.nvimtree.setup.git.ignore = false
+
 -- Additional Plugins
 lvim.plugins = {
 	{ "lunarvim/colorschemes" },
