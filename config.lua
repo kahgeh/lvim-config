@@ -49,6 +49,7 @@ lvim.builtin.which_key.vmappings.r = replace_kb.replace
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
+lvim.builtin.nvimtree.setup.auto_close = false
 lvim.builtin.nvimtree.setup.git.ignore = false
 lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.nvimtree.side = "left"
