@@ -94,7 +94,7 @@ lvim.builtin.treesitter.ensure_installed = {
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 lvim.lsp.automatic_servers_installation = true
-vim.list_extend(lvim.lsp.override, { "powershell_es", "tailwindcss", "ember" })
+vim.list_extend(lvim.lsp.override, { "powershell_es", "tailwindcss", "ember", "lemminx" })
 require("lspconfig").powershell_es.setup({
 	bundle_path = "/Users/kahgeh.tan/bin/pwsh_es",
 })
